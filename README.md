@@ -1,2 +1,3 @@
-# Sim-SistemaOperativo
-Hoja de trabajo 5
+# Hoja de trabajo 5
+Integrantes: Axel Cruz, Enya  Gálvez
+Sim SistemaOperativo
