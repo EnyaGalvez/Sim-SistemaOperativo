@@ -8,8 +8,8 @@ import xml.etree.ElementTree as ET
 
 # Parámetros de simulación
 RANDOM_SEED = 42
-INTERVALO_LLEGADA = [1, 5, 10]
-TOTAL_PROCESOS = [25, 50, 100, 150, 200]
+INTERVALO_LLEGADA = [10, 5, 1] # Intervalos
+TOTAL_PROCESOS = [25, 50, 100, 150, 200] #Procesos
 DIRECTORIO_DATOS = "../datos/"
 
 # Verificar si la carpeta de datos existe
@@ -29,8 +29,8 @@ def inicializar_archivos_xml():
 # Inicializar los archivos XML si no existen
 inicializar_archivos_xml()
 
-def ejecutar_simulacion(num_procesos):
-    print(f"\n--- EJECUTANDO SIMULACIÓN PARA {num_procesos} PROCESOS ---\n")
+def ejecutar_simulacion(num_procesos, intervalo_llegada):
+    print(f"\n--- EJECUTANDO SIMULACIÓN PARA {num_procesos} PROCESOS con INTERVALO {intervalo_llegada} ---\n")
 
     random.seed(RANDOM_SEED)
     env = simpy.Environment()
@@ -38,15 +38,16 @@ def ejecutar_simulacion(num_procesos):
     cpu = Procesador(env, velocidad=3, num_cpus=1)
     ram = Memoria(env, capacidad=100)
 
-    archivo_xml = os.path.join(DIRECTORIO_DATOS, f"procesos{num_procesos}.xml")
+    archivo_xml = os.path.join(DIRECTORIO_DATOS, f"procesos{num_procesos}_intervalo{intervalo_llegada}.xml")
 
     for i in range(num_procesos):
         Proceso(env, f"Proceso-{i+1}", cpu, ram, archivo_xml)
 
     env.run()
 
-# Ejecutar simulaciones para cada evento
-for procesos in TOTAL_PROCESOS:
-    ejecutar_simulacion(procesos)
+# Ejecutar simulaciones para cada proceso segun intervalo
+for intervalo in INTERVALOS_LLEGADA:
+    for procesos in TOTAL_PROCESOS:
+        ejecutar_simulacion(procesos, intervalo)
 
 print("\nSimulación completada. Se actualizaron los archivos XML en la carpeta 'datos/'.")
