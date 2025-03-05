@@ -46,7 +46,7 @@ def ejecutar_simulacion(num_procesos, intervalo_llegada):
     env.run()
 
 # Ejecutar simulaciones para cada proceso segun intervalo
-for intervalo in INTERVALOS_LLEGADA:
+for intervalo in INTERVALO_LLEGADA:
     for procesos in TOTAL_PROCESOS:
         ejecutar_simulacion(procesos, intervalo)
 

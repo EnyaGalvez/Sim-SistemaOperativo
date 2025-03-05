@@ -3,7 +3,7 @@ import xml.etree.ElementTree as ET
 import matplotlib.pyplot as plt
 
 # Rutas de archivos
-DIRECTORIO_DATOS = "../data/"
+DIRECTORIO_DATOS = "../datos/"
 DIRECTORIO_REPORTES = "../reportes/"
 
 # Parámetros de simulación
@@ -20,7 +20,7 @@ def extraer_tiempos_finalizacion(archivo_xml):
     tiempos_finalizacion = []
 
     if not os.path.exists(archivo_xml) or os.path.getsize(archivo_xml) == 0:
-        print(f"⚠️ Archivo {archivo_xml} no encontrado o vacío. Se omitirá.")
+        print(f"Archivo {archivo_xml} no encontrado o vacío. Se omitirá.")
         return tiempos_finalizacion
 
     try:
@@ -34,7 +34,7 @@ def extraer_tiempos_finalizacion(archivo_xml):
                 tiempos_finalizacion.append(tiempo)
 
     except ET.ParseError:
-        print(f"⚠️ Error al leer el archivo {archivo_xml}. Puede estar corrupto.")
+        print(f"Error al leer el archivo {archivo_xml}. Puede estar corrupto.")
 
     return tiempos_finalizacion
 
@@ -63,7 +63,7 @@ def graficar_resultados():
             plt.savefig(ruta_grafico)
             plt.show()
 
-            print(f"✅ Gráfico guardado en {ruta_grafico}")
+            print(f"Gráfico guardado en {ruta_grafico}")
 
 
 # Ejecutar la función para generar los gráficos
