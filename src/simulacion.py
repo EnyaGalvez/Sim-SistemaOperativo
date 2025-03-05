@@ -8,7 +8,7 @@ import xml.etree.ElementTree as ET
 
 # Parámetros de simulación
 RANDOM_SEED = 42
-INTERVALO_LLEGADA = 5
+INTERVALO_LLEGADA = [1, 5, 10]
 TOTAL_PROCESOS = [25, 50, 100, 150, 200]
 DIRECTORIO_DATOS = "../datos/"
 
